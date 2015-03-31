@@ -1,8 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h2 Welcome to #{title}
 
-  div(ng-controller='TestCtrl')
-    div {{ poc }}
+  div(ng-controller='JobListCtrl')
+    .list-group
+      a.list-group-item(href='#')(ng-repeat='job in jobs')
+        h4.list-group-item-heading {{ job.title }}
+        p.list-group-item-text {{ job.description }}

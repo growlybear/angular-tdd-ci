@@ -6,8 +6,8 @@ html(ng-app='app', lang='en')
     link(rel='stylesheet', href='/css/style.css')
 
   body
-
-    block content
+    .container(ng-controller='MainCtrl')
+      block content
 
     script(src='/angular/angular.js')
     script(src='/js/app.js')

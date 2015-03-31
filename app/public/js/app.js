@@ -2,6 +2,15 @@
 
 angular
   .module('app', [])
-  .controller('TestCtrl', ['$scope', function ($scope) {
-    $scope.poc = 'Angular too';
+  .controller('MainCtrl', function () {
+    // nothing yet
+  })
+  .controller('JobListCtrl', ['$scope', function ($scope) {
+    $scope.jobs = [{
+      title: 'Sales Person',
+      description: 'you will fight dragons'
+    }, {
+      title: 'Accountant',
+      description: 'you will use the keyboard'
+    }];
   }]);

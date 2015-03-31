@@ -18,7 +18,7 @@ npm start
 DEBUG=app:* app/bin/www
 ```
 
-At the moment, the app is running on Heroku at (https://intense-retreat-3770.herokuapp.com/) during
+At the moment, the app is running on Heroku at https://intense-retreat-3770.herokuapp.com/ during
 development. To install into your own Heroku account:
 
 ```sh

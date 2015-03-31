@@ -1,0 +1,11 @@
+{
+  "name": "angular-tdd-ci",
+  "version": "1.0.0",
+  "description": "JobFinder example app for CI & TDD w Angular & Node course on Pluralsight\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Allan <michaelallan@optushome.com.au>",
+  "private": true
+}

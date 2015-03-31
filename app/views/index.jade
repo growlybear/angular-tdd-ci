@@ -5,6 +5,6 @@ block content
 
   div(ng-controller='JobListCtrl')
     .list-group
-      a.list-group-item.ng-cloak(href='#')(ng-repeat='job in jobs')(ng-cloak)
+      a.list-group-item.ng-cloak(href='#', ng-repeat='job in jobs', ng-cloak)
         h4.list-group-item-heading {{ job.title }}
         p.list-group-item-text {{ job.description }}

@@ -20,6 +20,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// serve static content from packages installed by bower
+app.use(express.static(path.join(__dirname, 'components')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

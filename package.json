@@ -4,9 +4,18 @@
   "description": "JobFinder example app for CI & TDD w Angular & Node course on Pluralsight\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app/bin/www"
   },
   "author": "Michael Allan <michaelallan@optushome.com.au>",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "body-parser": "~1.12.0",
+    "cookie-parser": "~1.3.4",
+    "debug": "~2.1.1",
+    "express": "~4.12.2",
+    "jade": "~1.9.2",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0"
+  }
 }

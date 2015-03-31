@@ -5,7 +5,8 @@ Example JobFinder app for CI &amp; TDD w Angular &amp; Node course on Pluralsigh
 For local development:
 ```sh
 npm install -g bower  # if necessary
-cd app && npm install && bower install && cd -
+npm install
+bower install
 ```
 
 To run the app:

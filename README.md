@@ -8,8 +8,7 @@ npm install -g bower  # if necessary
 npm install -g nvm    # if necessary
 git clone git@github.com:growlybear/angular-tdd-ci.git
 cd angular-tdd-ci
-npm install
-bower install
+npm install           # NOTE will run 'bower install' via the postinstall hook
 ```
 
 To run the app locally, from the root directory:

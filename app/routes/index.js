@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'JobFinder and CI' });
+  res.render('index', { title: 'JobFinder' });
 });
 
 module.exports = router;

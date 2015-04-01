@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
+var jobsData = require('../lib/jobs-data');
 
 // Heartbeat
 router.get('/', function (req, res, next) {
@@ -10,13 +11,10 @@ router.get('/', function (req, res, next) {
 
 // Jobs API
 router.get('/jobs', function (req, res, next) {
-  mongoose.model('Job')
-    .find({})
-    .exec(function (err, collection) {
-      if (err) return next(err);
-
+  jobsData.findJobs()
+    .then(function (collection) {
       res.json(collection);
-    })
+    });
 });
 
 module.exports = router;

@@ -11,7 +11,7 @@ cd angular-tdd-ci
 npm install           # NOTE will run 'bower install' via the postinstall hook
 mkdir config
 touch config/development.json
-touch config/production.json
+touch config/production.json    # etc.
 ```
 
 Fill in development and production configs with appropriate values, eg.:

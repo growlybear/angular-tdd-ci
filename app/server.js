@@ -1,6 +1,12 @@
 var path = require('path');
 
-var config = require('config');
+var nconf = require('nconf');
+
+// Load config IN PRIORITY ORDER from env, argv and a config file (if it exists)
+// so that heroku will read from env but locally we'll read from file for convenience
+nconf.argv().env().file({
+  file: 'config/' + process.env.NODE_ENV + '.json'
+});
 
 var express = require('express');
 var mongoose = require('mongoose');
@@ -19,7 +25,7 @@ var api = require('./routes/api');
 var app = express();
 
 var con = mongoose.connection;
-mongoose.connect(config.get('DB_CONN_STR'));
+mongoose.connect(nconf.get('DB_CONN_STR'));
 con.once('open', function () {
   console.log('Connected to mongodb');
   jobModel.seedJobs();

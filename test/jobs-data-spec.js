@@ -26,14 +26,25 @@ var connectDB = Promise.promisify(mongoose.connect, mongoose);
 
 
 describe("GET jobs", function () {
-  it("should be seeded with initial values if empty", function (done) {
+
+  var jobs;
+
+  before(function (done) {
     connectDB(nconf.get('DB_CONN_STR'))
       .then(resetJobs)
       .then(jobModel.seedJobs)
       .then(findJobs)
-      .then(function (jobsList) {
-        expect(jobsList.length).to.be.above(1);
+      .then(function (collection) {
+        jobs = collection
         done();
       });
+  });
+
+  it("should be seeded with initial values if empty", function () {
+    expect(jobs.length).to.be.above(1);
+  });
+
+  it("should have a job with a title", function () {
+    expect(jobs[0]).to.exist();
   });
 });

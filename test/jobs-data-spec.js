@@ -45,6 +45,10 @@ describe("GET jobs", function () {
   });
 
   it("should have a job with a title", function () {
-    expect(jobs[0]).to.exist();
+    expect(jobs[0].title).to.be.ok();
+  });
+
+  it("should have a job with a description", function () {
+    expect(jobs[0].description).to.be.ok();
   });
 });

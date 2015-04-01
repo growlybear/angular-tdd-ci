@@ -4,7 +4,7 @@
   "description": "JobFinder example app for CI & TDD w Angular & Node course on Pluralsight\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test mocha",
     "start": "node app/bin/www",
     "postinstall": "bower install"
   },
@@ -25,5 +25,9 @@
   "engines": {
     "node": "0.12.0",
     "npm": "2.5.1"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.2.1"
   }
 }

@@ -11,12 +11,6 @@ nconf.argv().file({
   file: 'config/' + process.env.NODE_ENV + '.json'
 });
 
-function resetJobs() {
-  return new Promise(function (resolve, reject) {
-    mongoose.connection.collections['jobs'].drop(resolve, reject);
-  });
-}
-
 
 describe("GET jobs", function () {
 
@@ -24,8 +18,8 @@ describe("GET jobs", function () {
 
   before(function (done) {
     jobsData.connectDB(nconf.get('DB_CONN_STR'))
-      .then(resetJobs)
-      .then(jobModel.seedJobs)
+      .then(jobsData.resetJobs)
+      .then(jobsData.seedJobs)
       .then(jobsData.findJobs)
       .then(function (collection) {
         jobs = collection

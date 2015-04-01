@@ -17,18 +17,23 @@ function resetJobs() {
   });
 }
 
+function findJobs(query) {
+  return Promise.cast(mongoose.model('Job').find(query).exec());
+}
+
+// NOTE root object required as second param when promisifying internal methods
+var connectDB = Promise.promisify(mongoose.connect, mongoose);
+
 
 describe("GET jobs", function () {
   it("should be seeded with initial values if empty", function (done) {
-    mongoose.connect(nconf.get('DB_CONN_STR'), function () {
-      resetJobs()
-        .then(jobModel.seedJobs)
-        .then(function () {
-          mongoose.model('Job').find({}).exec(function (err, jobsList) {
-            expect(jobsList.length).to.be.above(1);
-            done();
-          });
+    connectDB(nconf.get('DB_CONN_STR'))
+      .then(resetJobs)
+      .then(jobModel.seedJobs)
+      .then(findJobs)
+      .then(function (jobsList) {
+        expect(jobsList.length).to.be.above(1);
+        done();
       });
-    });
   });
 });

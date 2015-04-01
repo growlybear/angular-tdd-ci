@@ -13,12 +13,11 @@ nconf.argv().file({
 
 
 describe("GET jobs", function () {
-  this.timeout(10000);
 
   var jobs;
 
   before(function (done) {
-    jobsData.connectDB(nconf.get('DB_CONN_STR'))
+    jobsData.connectDB(process.env.DB_CONN_STR)
       .then(jobsData.resetJobs)
       .then(jobsData.seedJobs)
       .then(jobsData.findJobs)

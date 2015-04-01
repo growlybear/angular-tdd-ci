@@ -19,7 +19,7 @@ var api = require('./routes/api');
 var app = express();
 
 var con = mongoose.connection;
-mongoose.connect(config.get('connStr'));
+mongoose.connect(config.get('DB_CONN_STR'));
 con.once('open', function () {
   console.log('Connected to mongodb');
   jobModel.seedJobs();

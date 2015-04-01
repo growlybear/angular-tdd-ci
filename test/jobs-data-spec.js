@@ -13,7 +13,6 @@ nconf.argv().file({
 
 
 describe("GET jobs", function () {
-
   var jobs;
 
   before(function (done) {

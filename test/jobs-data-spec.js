@@ -7,16 +7,18 @@ var jobsData = require('../app/lib/jobs-data');
 
 // TODO remove this duplicated code from server.js
 var nconf = require('nconf');
-nconf.argv().file({
+nconf.env().argv().file({
+  // use file config locally, and an env var on Codeship CI
   file: 'config/' + process.env.NODE_ENV + '.json'
 });
 
 
 describe("GET jobs", function () {
+
   var jobs;
 
   before(function (done) {
-    jobsData.connectDB(process.env.DB_CONN_STR)
+    jobsData.connectDB(nconf.get('DB_CONN_STR'))
       .then(jobsData.resetJobs)
       .then(jobsData.seedJobs)
       .then(jobsData.findJobs)

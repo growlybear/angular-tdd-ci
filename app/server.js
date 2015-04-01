@@ -3,7 +3,7 @@ var path = require('path');
 var nconf = require('nconf');
 // Load config IN PRIORITY ORDER from env, argv and a config file (if it exists)
 // so that heroku will read from env but locally we'll read from file for convenience
-nconf.argv().env().file({
+nconf.env().argv().file({
   file: 'config/' + process.env.NODE_ENV + '.json'
 });
 

@@ -13,6 +13,7 @@ nconf.argv().file({
 
 
 describe("GET jobs", function () {
+  this.timeout(10000);
 
   var jobs;
 

@@ -3,6 +3,7 @@ var Promise = require('bluebird');
 
 var mongoose = require('mongoose');
 var jobModel = require('../app/models/job');
+var jobsData = require('../app/lib/jobs-data');
 
 // TODO remove this duplicated code from server.js
 var nconf = require('nconf');
@@ -17,10 +18,6 @@ function resetJobs() {
   });
 }
 
-function findJobs(query) {
-  return Promise.cast(mongoose.model('Job').find(query).exec());
-}
-
 // NOTE root object required as second param when promisifying internal methods
 var connectDB = Promise.promisify(mongoose.connect, mongoose);
 
@@ -33,7 +30,7 @@ describe("GET jobs", function () {
     connectDB(nconf.get('DB_CONN_STR'))
       .then(resetJobs)
       .then(jobModel.seedJobs)
-      .then(findJobs)
+      .then(jobsData.findJobs)
       .then(function (collection) {
         jobs = collection
         done();

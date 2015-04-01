@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var jobSchema = mongoose.Schema({
-  title: { title: String },
+  title: { type: String },
   description: { type: String }
 });
 

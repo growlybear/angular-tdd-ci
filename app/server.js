@@ -1,5 +1,7 @@
 var path = require('path');
 
+var config = require('config');
+
 var express = require('express');
 var mongoose = require('mongoose');
 
@@ -17,7 +19,7 @@ var api = require('./routes/api');
 var app = express();
 
 var con = mongoose.connection;
-mongoose.connect('mongodb://localhost/jobfinder');
+mongoose.connect(config.get('connStr'));
 con.once('open', function () {
   console.log('Connected to mongodb');
   jobModel.seedJobs();

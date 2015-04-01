@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var Promise = require('bluebird');
 
 var jobSchema = mongoose.Schema({
   title: { type: String },

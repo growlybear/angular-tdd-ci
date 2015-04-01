@@ -8,7 +8,6 @@ nconf.argv().env().file({
 });
 
 var express = require('express');
-var mongoose = require('mongoose');
 
 var jobModel = require('./models/job');
 var jobsData = require('./lib/jobs-data');

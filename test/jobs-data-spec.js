@@ -11,15 +11,11 @@ nconf.argv().file({
   file: 'config/' + process.env.NODE_ENV + '.json'
 });
 
-
 function resetJobs() {
   return new Promise(function (resolve, reject) {
     mongoose.connection.collections['jobs'].drop(resolve, reject);
   });
 }
-
-// NOTE root object required as second param when promisifying internal methods
-var connectDB = Promise.promisify(mongoose.connect, mongoose);
 
 
 describe("GET jobs", function () {
@@ -27,7 +23,7 @@ describe("GET jobs", function () {
   var jobs;
 
   before(function (done) {
-    connectDB(nconf.get('DB_CONN_STR'))
+    jobsData.connectDB(nconf.get('DB_CONN_STR'))
       .then(resetJobs)
       .then(jobModel.seedJobs)
       .then(jobsData.findJobs)

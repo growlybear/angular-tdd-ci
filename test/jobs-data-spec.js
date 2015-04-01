@@ -21,13 +21,13 @@ function resetJobs() {
 describe("GET jobs", function () {
   it("should be seeded with initial values if empty", function (done) {
     mongoose.connect(nconf.get('DB_CONN_STR'), function () {
-      resetJobs().then(function () {
-        jobModel.seedJobs(function () {
+      resetJobs()
+        .then(jobModel.seedJobs)
+        .then(function () {
           mongoose.model('Job').find({}).exec(function (err, jobsList) {
             expect(jobsList.length).to.be.above(1);
             done();
           });
-        });
       });
     });
   });

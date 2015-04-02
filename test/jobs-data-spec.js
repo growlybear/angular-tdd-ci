@@ -16,12 +16,12 @@ nconf.env().argv().file({
 describe("GET jobs", function () {
 
   // extend timeout for CI making network calls
-  this.timeout(20000);
+  this.timeout(5000);
 
   var jobs;
 
   before(function (done) {
-    jobsData.connectDB(nconf.get('DB_CONN_STR'))
+    jobsData.connectDB('mongodb://localhost/jobfinder-test')
       .then(jobsData.resetJobs)
       .then(jobsData.seedJobs)
       .then(jobsData.findJobs)

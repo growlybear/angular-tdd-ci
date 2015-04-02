@@ -15,6 +15,9 @@ nconf.env().argv().file({
 
 describe("GET jobs", function () {
 
+  // extend timeout for CI making network calls
+  this.timeout(5000);
+
   var jobs;
 
   before(function (done) {

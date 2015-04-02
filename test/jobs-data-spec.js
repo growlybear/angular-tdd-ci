@@ -5,18 +5,8 @@ var mongoose = require('mongoose');
 var jobModel = require('../app/models/job');
 var jobsData = require('../app/lib/jobs-data');
 
-// TODO remove this duplicated code from server.js
-var nconf = require('nconf');
-nconf.env().argv().file({
-  // use file config locally, and an env var on Codeship CI
-  file: 'config/' + process.env.NODE_ENV + '.json'
-});
-
 
 describe("GET jobs", function () {
-
-  // extend timeout for CI making network calls
-  this.timeout(5000);
 
   var jobs;
 
